@@ -315,7 +315,20 @@ AddEventHandler('po:pullover', function()
 		regYear = "~r~UNREGISTERED"
 	elseif InsuredRand == 8 then
 		flags = "~r~UNINSURED"
-	end	
+	end
+	
+	gunlicence = "~g~NONE"
+	None = math.random(8)
+	Expired = math.random(12)
+	Valid = math.random(24)
+	
+	if Valid == 24 then
+		gunlicense = "~r~Valid"
+	elseif Expired == 12 then
+		gunlicense = "~r~Expired"
+	elseif None == 8 then
+		gunlicense = "~r~None"
+	end
 	lostIdChance = math.random(0,100)
 	diffname = math.random(0,100)
 	if isStolen == true or diffname > 95 then
@@ -457,13 +470,13 @@ RegisterCommand("runplate", function(s,args,raw)
 		TriggerEvent('radio')
 		ShowNotification("~b~LSPD Database: ~w~\nRunning ~o~" .. vehPlateNum .. "~w~." )
 		Wait(2000)
-		ShowNotification("~w~Reg. Owner: ~y~" .. regOwner .. "~w~\nReg. Year: ~y~" .. regYear .. "~w~\nFlags: ~y~" .. flags)
+		ShowNotification("~w~Reg. Owner: ~y~" .. regOwner .. "~w~\nReg. Year: ~y~" .. regYear .. "~w~\nFlags: ~y~" .. flags .. "~w~\nGun. License: ~y~" .. gunLicense)
 	else
 		TriggerEvent('radio')
 		ShowNotification("~o~LSPD Database: ~w~\nRunning ~o~" .. args[1] .. "~w~." )
 		Wait(2000)
 		TriggerEvent('getInfo')
-		ShowNotification("~w~Reg. Owner: ~y~" .. rregOwner .. "~w~\nReg. Year: ~y~" .. rregYear .. "~w~\nFlags: ~y~" .. rflags)
+		ShowNotification("~w~Reg. Owner: ~y~" .. rregOwner .. "~w~\nReg. Year: ~y~" .. rregYear .. "~w~\nFlags: ~y~" .. rflags .. "~w~\nGun. License: ~y~" .. rgunLicense)
 	end
 end)
 
